@@ -193,7 +193,7 @@ def ShowMenu(title, thumb, url):
     dt = [d.strip() for d in html.xpath('//dt[text()="Type:"]/following-sibling::dd/text()') if (d.strip() != ',') and (d.strip() != '')]
     kind = dt[0] if dt else None
 
-    server_node = html.xpath('//div[@data-type="direct"]')
+    server_node = html.xpath('//div[@data-type="iframe"]')
     if not server_node:
         oc.header = 'Warning'
         oc.message = 'There is no episodes for this anime, we will update asap!'
