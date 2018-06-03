@@ -38,6 +38,7 @@ This plugin creates a new Video Channel within [Plex Media Server](https://plex.
 
 ## To Do
 
+- Fix Cookies and Video Playback
 - Switch to `TVShow` and `Season` objects
 - Add bookmark support
 
@@ -45,3 +46,6 @@ This plugin creates a new Video Channel within [Plex Media Server](https://plex.
 
 - [Plex Forums Thread](https://forums.plex.tv/discussion/251439)
 - [GitHub Issues](https://github.com/Twoure/9anime.bundle/issues)
+
+## UPDATE!!!
+This is an outdated readme that points back to the original creators forum. I will be updating this page with proper credit and my goals for this project due to the original creator taking a leave of absence.
