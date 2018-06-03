@@ -1,7 +1,7 @@
 9anime
 ===========
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/87e4130322374e9e900fcc763a27eb4e)](https://www.codacy.com/app/twoure/9anime-bundle?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Twoure/9anime.bundle&amp;utm_campaign=Badge_Grade) [![GitHub issues](https://img.shields.io/github/issues/Twoure/9anime.bundle.svg?style=flat)](https://github.com/Twoure/9anime.bundle/issues) [![](https://img.shields.io/github/release/Twoure/9anime.bundle.svg?style=flat)](https://github.com/Twoure/9anime.bundle/releases)
+[![GitHub issues](https://img.shields.io/github/issues/Cyt0mand3r/9anime.bundle.svg?style=flat)](https://github.com/Twoure/9anime.bundle/issues) [![](https://img.shields.io/github/release/Twoure/9anime.bundle.svg?style=flat)](https://github.com/Twoure/9anime.bundle/releases)
 
 This plugin creates a new Video Channel within [Plex Media Server](https://plex.tv/) (PMS) to view [Anime](https://en.wikipedia.org/wiki/Anime) from [9anime.to](https://9anime.to/).  It is currently under development and as such, should be considered alpha software and potentially unstable.
 
