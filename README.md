@@ -1,7 +1,7 @@
 9anime
 ===========
 
-[![GitHub issues](https://img.shields.io/github/issues/Cyt0mand3r/9anime.bundle.svg?style=flat)](https://github.com/Twoure/9anime.bundle/issues) [![](https://img.shields.io/github/release/Twoure/9anime.bundle.svg?style=flat)](https://github.com/Twoure/9anime.bundle/releases)
+[![GitHub issues](https://img.shields.io/github/issues/Cyt0mand3r/9anime.bundle.svg?style=flat)](https://github.com/Cyt0mand3r/9anime.bundle/issues) [![](https://img.shields.io/github/release/Cyt0mand3r/9anime.bundle.svg?style=flat)](https://github.com/Cyt0mand3r/9anime.bundle/releases)
 
 This plugin creates a new Video Channel within [Plex Media Server](https://plex.tv/) (PMS) to view [Anime](https://en.wikipedia.org/wiki/Anime) from [9anime.to](https://9anime.to/).  It is currently under development and as such, should be considered alpha software and potentially unstable.
 
