@@ -37,6 +37,7 @@ class Metadata(object):
     @property
     def current_episode(self):
         enode = self.html.xpath('//a[@class="active"][@data-base]')
+        
         for e in enode:
             epn = int(e.get('data-base'))
         return epn
@@ -203,33 +204,41 @@ class Metadata(object):
                         Log.Warn(u"* S{}|E{}, Server {}, comment '{}', href='{}', sid='{}'".format(sea, epn, ser, comment, href, self.data_id))
         return dict()
 
+    #Gets the server list from 9anime and parses them into a list that which is sorted and assigned numbers for the GUI options
     def init_servers(self):
         if self.server_list:
             return self.server_list
-        for i, s in enumerate(self.html.xpath('//div[@class="server row"]')):
-            node = s.xpath("./label")
-            name = node[0].text_content().strip() if node else None
-            if not name:
-                continue
+        #Log("Server test = {}".format(self.html.xpath('(//span[starts-with(@class,"tab")]/text()[string-length(normalize-space(.))>0])[position() >= 1 and position() <= 4]')))
+        for s in self.html.xpath('//div[@class="widget servers"]'):
+            for index, n in enumerate(s.xpath('(//span[starts-with(@class,"tab") and @data-name])[position() >= 1 and position() <= 4]')):
 
-            specials_list = list()
-            season_dict = dict()
-            for season in s.xpath('.//ul[@data-range-id]'):
-                ep_list = list()
-                season_number = int(season.get('data-range-id'))+1
-                for e in season.xpath('./li/a'):
-                    if self.re_comment.match(e.text.strip()):
-                        specials_list.append(e)
-                    else:
-                        ep_list.append(e)
-                season_dict[season_number] = ep_list
-                if specials_list:
-                    season_dict.update({0: specials_list})
+                #Gets the name of the server which it is current data-name used for matching server to episodes
+                name = str(n.xpath('.//text()'))
+                data_name = str(n.xpath('.//@data-name')).replace("['", "").replace("']", "") #gets data-name and removes outside ['**'] from the number
+                #Log("Server Name = {}, Server Data-Name = {}".format(name, data_name))
+                
+                specials_list = list()
+                season_dict = dict()
 
-            self.server_list.append({
-                'server_number': self.i_for_name(name), 'list_index': i,
-                'name': name, 'seasons': season_dict
-                })
+                #Log("Test xpath = {}".format(('//ul[@data-range-id and ancestor-or-self::*[@data-id="' + data_name + '"]]')))
+                for season in s.xpath('//ul[@data-range-id and ancestor-or-self::*[@data-id="' + data_name + '"]]'):
+                    ep_list = list()
+                    season_number = int(season.get('data-range-id'))+1
+                    for e in season.xpath('./li/a'):
+                        if self.re_comment.match(e.text.strip()):
+                            specials_list.append(e)
+                        else:
+                            ep_list.append(e)
+                    season_dict[season_number] = ep_list
+                    if specials_list:
+                        season_dict.update({0: specials_list})
+
+                self.server_list.append({
+                    'server_number': self.i_for_name(name), 'list_index': index,
+                    'name': name, 'seasons': season_dict
+                    })
+
+                #Log("Server Data = Num:{}, Index:{}, Name:{}, Seasons:{}".format(self.i_for_name(name), index, name, season_dict))
         return
 
     @property
@@ -256,7 +265,6 @@ class Metadata(object):
     def cepinfo_dict(self):
         epr = self.episode(active=True)
         Log("* Original ep_dict = {}".format(epr))
-
         ep = self.episode(
             ep_num=epr['epn'], sea_num=epr['season'],
             ser_num=self.selected_server,
